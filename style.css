@@ -1,0 +1,112 @@
+body{
+  background-color:#3688d0;  
+     font-size: 17px;
+}
+
+.BttonBlue{
+    border:1px solid #22639d;
+    background-color: #3688d0;
+    color:#ffffff;
+   margin-left: 2%;
+    display:inline-block;
+   
+    
+}
+.BttonBlue:hover{
+    background-color:  #22639d;
+}
+.connexion{
+   margin-bottom:30px;
+    padding-left:10%;
+    
+    
+   
+}
+.form-inline{
+      display:inline-block;
+}
+.form-inline input{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+ 
+  
+}
+
+.raccourcis{
+    color:#ffffff;
+    margin-left:30%;
+    margin-top:14%;
+    
+}
+.checked{
+    
+    margin-left:5%;
+    display:flex;
+}
+#check{
+display:flex;    
+}
+#check:nth-child(2)
+{
+    order: 3;
+}
+.container {
+    display:flex;
+}
+
+.logo,.pub{
+      border:1px solid #22639d;
+    background-color: #3688d0;
+    color:#ffffff;
+   margin-left:7%;
+    width:10%;
+    padding-left: 10%;
+   padding-top: 5%;
+    padding-bottom: 5%;
+  padding-right: 10%;
+    margin-bottom:5%;
+}
+.container{
+    margin-left:12%;
+}
+.logo:hover,.pub:hover{
+     background-color:  #22639d;
+}
+ul{
+    list-style:none;
+    text-decoration: none;
+     margin-left:37%;
+    margin-top:8%;
+    
+}
+li{
+    display:inline-block;
+    color:#ffffff;
+    
+}
+li a{
+    color:#ffffff;
+    text-decoration: none;
+    
+}
+li a:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.compte{
+    color:#ffffff;
+    text-align: center;
+    text-decoration: none;
+    
+}
+.registration{
+    color:#ffffff;
+    margin-left:30%;
+    margin-top:7%;
+  
+    
+}
+#hide{
+    display:none;
+}

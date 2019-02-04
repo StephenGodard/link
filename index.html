@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="logo">Logo</div>
+<div class="pub">Publicité</div>
+  </div>
+   <div class="connexion">
+ 
+   
+  
+   <span class="BttonBlue">Accueil</span>
+   <span class="BttonBlue">Présentation</span>
+   <span class="BttonBlue" id="registration">Création d'un compte</span>
+  <form class="form-inline" method="post" action="login.php">
+   
+   <input type="email" name="login" size="10"/>
+  
+   <input type="password" name="password" size="10"/>
+   
+    <input type="submit" name="connexion" value="connexion" class="BttonBlue" />
+      
+       </form>
+           </div>
+    <div class="raccourcis">   
+        <form method="post" action="traitement.php">
+           <label>URL à raccoucir:</label>
+            <input type="text" name="url"/>
+           
+        <input type="submit" name="validation" value="Raccourcir" class="BttonBlue" /><br/>
+        <div class="checked">
+          <div id="check">
+             <p>Sécuriser avec un mot de passe</p>
+             <input name="secu" type="checkbox" class="checked" id="checkbox"/>
+        </div>
+           
+           </div>
+     
+    <p style="color:black;"> Créer un compte pour voir vos autres options postibles </p>
+        </form>
+       
+        
+        
+    </div>
+    <div class="registration" id="hide">
+     <form method="post" action="registration.php">
+      <label>Adresse mail:</label>
+      <input type="email" name="login"/><br/>
+      <label>nom:</label>
+      <input type="text" name="nom"/><br/>
+      <label>Password:</label>
+      <input type="password" name="password" /><br/>
+      <input type="submit" name="register" value="créer un compte" class="BttonBlue" />
+      
+      
+     </form>
+    </div>
+     <ul>
+            <li><a href="">Devenir partenaires</a></li>
+            <li><a href="">CGV</a></li>
+            <li><a href="">Mentions légales</a></li>
+        </ul>
+  
+    
+</body>
+</html>
