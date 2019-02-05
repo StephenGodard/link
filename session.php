@@ -26,11 +26,19 @@
     <?php
 // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
 session_start ();
-
+if($_SESSION['ip']!=$_SERVER['REMOTE_ADDR'])
+{
+  // Si c'est le cas, on redirige vers une page d'erreur
+  header('Location: 403.php?error=wrong_ip');
+ 
+  // On détruit la session par sécurité (facultatif)
+  $_SESSION = array();
+  exit;
+}
 // On récupère nos variables de session
-if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
+if (isset($_SESSION['login']) && isset($_SESSION['nom'])) {
     
- echo'<p>Bonjour ' .$_SESSION['login'].' <br/> </p>';
+    echo'<p>Bonjour ' .$_SESSION['nom'].' <br/> </p>';
 }        
     ?>
     <p> vous pouvez désormais accéder à toutes nos options de création d'URL raccourcies <br/><br/>

@@ -11,30 +11,21 @@
     $login=$_POST['login'];
     $password=$_POST['password'];
     $cleSecrete="MaCle";
- function encrypt($pure_string, $encryption_key) {
-
-    $iv_size = mcrypt_get_iv_size(MCRYPT_BLOWFISH, MCRYPT_MODE_ECB);
-
-    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-
-    $encrypted_string = mcrypt_encrypt(MCRYPT_BLOWFISH, $encryption_key, utf8_encode($pure_string), MCRYPT_MODE_ECB, $iv);
-
-    return $encrypted_string;
-
-}
+    
  
- $pwdChiffre=encrypte($password,$cleSecrete);
+ $pwdChiffre=md5($password);
+    echo"pwdChiffre";
     $link = mysqli_connect("localhost","root","MySQL","Breizhlink");
     //Requète sql
  
  
      $command="SELECT nom FROM login WHERE login= '" .$login. "' AND password='".$pwdChiffre."';";
-  
+    echo ($command);
 
 //récupère le résultat envoyer par la base de données
 $result = mysqli_query($link, $command);
-
- if(!mysqli_fetch_row($result)){//Ici on trouve aucun résultat
+$row=mysqli_fetch_row($result);
+ if(mysqli_fetch_row($result)){//Ici on trouve aucun résultat
         echo "pas bon login pass";
             
 			mysqli_close($bdd);
@@ -45,10 +36,11 @@ $result = mysqli_query($link, $command);
         //Ici l'authetification est OK
         
         echo "authetification ok <br/>";
-     session_start();
-    
-     $_SESSION['login'] =$login;
-     $_SESSION['pwd'] = $password;
+     session_start();  
+     
+     $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+     $_SESSION['nom']=$row[0];
+     $_SESSION['login']=$login;
      header ('location:session.php');
     
   }//Fin de condition d'authentification
