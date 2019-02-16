@@ -1,51 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
+ <?php session_start(); ?>
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+  <meta charset="utf-8">
   <title>Connexion</title>
 </head>
 <body>
   <?php
-  session_start();  
-
-
   $login=$_POST['login'];
   $password=$_POST['password'];
 
+  try{
+    $bdd = new PDO('mysql:host=localhost;dbname=Breizhlink','root', 'MySQL');
+    echo "connecter à la bdd" ;
+    
+  }
+  catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
 
+  }
+  $reponse = $bdd->prepare("SELECT nom FROM login WHERE login= ? AND password= ?;");
+  $reponse->bindParam(1, $login);
+  $reponse->bindParam(2, $password);
+  $reponse->execute();
 
-  $pwdChiffre=md5($password);
+// On affiche chaque entrée une à une
 
-  $link = mysqli_connect("localhost","root","MySQL","Breizhlink");
-    //Requète sql
+  if($donnees= $reponse->fetch())
 
-
-  $command="SELECT nom FROM login WHERE login= '" .$login. "' AND password='".$pwdChiffre."';";
- 
-
-//récupère le résultat envoyer par la base de données
-  $result = mysqli_query($link, $command);
- 
- if(!mysqli_fetch_row($result)){//Ici on trouve aucun résultat
-  echo "pas bon login";
-  mysqli_close($link);
-
-  echo '<a style="text-align:center;" href="index.html">Cliquez ici si votre navigateur ne vous redirige pas automatiquement </a><br/>'; 
-}
-else{
-        //Ici l'authetification est OK
-   $row=mysqli_fetch_row($result);
-  echo "authetification ok <br/>";
+  {
+    
+     echo "authetification ok <br/>";
 header ('location:session.php');
-  $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-  $_SESSION['nom']=$row[0];
-  $_SESSION['login']=$login;
   
+  $_SESSION['nom']=$donnees['nom'];
+  $_SESSION['login']=$login;
 
 
-  }//Fin de condition d'authentification
 
-  mysqli_close($link);
-  ?>
+  }
+  else{
+    echo '<a style="text-align:center;" href="index.html">Cliquez ici si votre navigateur ne vous redirige pas automatiquement </a><br/>'; 
+    session_destroy() ;
+  }
+
+$reponse->closeCursor(); // Termine le traitement de la requête
+?>
 </body>
 </html>
