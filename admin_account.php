@@ -62,7 +62,7 @@
 
       {
        echo '<tr>';
-       echo '';
+
        echo '<td>' .$donnees['id'] . '</td>' ;
        echo '<td>' .$donnees['login']. '</td>' ;
        echo '<td>' .$donnees['password'] . '</td>' ;
