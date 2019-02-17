@@ -110,3 +110,12 @@ li a:hover{
 #hide{
     display:none;
 }
+.userTable{
+ 
+  text-align: center;
+  margin-left: 15%;
+}
+.userTable td{
+   border:1px solid black;
+    
+}

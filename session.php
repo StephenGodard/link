@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
     	
 </head>
 <body>
+<?php session_start(); ?>
     <div class="container">
 <div class="logo">Logo</div>
 <div class="pub">Publicité</div>
@@ -17,24 +19,28 @@
    <div class="connexion">
    <span class="BttonBlue">Accueil</span>
    <span class="BttonBlue">Présentation</span>
-   <span class="BttonBlue">Création d'un compte</span>
+   
    <span class="BttonBlue">Raccourcir</span>
    <span class="BttonBlue">Mon compte</span>
    <span class="BttonBlue"><a href="logout.php">Déconnexion</a></span>
+  <?php  
+  if (isset($_SESSION['nom'])) {
+    if($_SESSION['nom']=='Admin') {
+
+        echo '<span class="BttonBlue"><a href="admin_account.php">Gérer les utilisateurs</a></span>';
+    }
+   
+}        
+
+   ?>
+
+
+   
     </div>
     <div class="compte">
     <?php
 // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
-session_start ();
-if($_SESSION['ip']!=$_SERVER['REMOTE_ADDR'])
-{
-  // Si c'est le cas, on redirige vers une page d'erreur
-  header('Location: 403.php?error=wrong_ip');
- 
-  // On détruit la session par sécurité (facultatif)
-  $_SESSION = array();
-  exit;
-}
+   
 // On récupère nos variables de session
 if (isset($_SESSION['login']) && isset($_SESSION['nom'])) {
     

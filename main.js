@@ -1,4 +1,7 @@
-var clickBttonpwd=3;
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+var clickBttonpwd=3; 
+
 window.addEventListener("load", function () {
     $('#registration').click(function(){
         $('.raccourcis').fadeOut('slow');
@@ -29,5 +32,16 @@ window.addEventListener("load", function () {
         if(clickBttonpwd===3){                 
         clickBttonpwd=1;
         }
+        
 });
+ document.getElementById("mail").addEventListener("keydown",function(){
+    if(document.getElementById("mail").value.match(mailformat)){
+        document.getElementById("mail").style.backgroundColor="green" ;
+        
+    }
+    else{
+     document.getElementById("mail").style.backgroundColor="red" ;   
+    }    
+
 });    
+ });    
