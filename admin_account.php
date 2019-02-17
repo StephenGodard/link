@@ -23,7 +23,7 @@
    <span class="BttonBlue">Raccourcir</span>
    <span class="BttonBlue">Mon compte</span>
    <span class="BttonBlue"><a href="logout.php">Déconnexion</a></span>
-   <span class="BttonBlue"><a href="">Gérer les utilisateurs</a></span>
+   <span class="BttonBlue"><a href=""></a></span>
   
  </div>
  <div class="compte">
@@ -67,7 +67,8 @@
        echo '<td>' .$donnees['login']. '</td>' ;
        echo '<td>' .$donnees['password'] . '</td>' ;
        echo '<td>' .$donnees['nom'] . '</td>' ;
-       echo '<td><form method="post" action="delete_ligne.php"><label> Supprimer </label><input type="submit" name="delete"class="BttonBlue" value="' .$donnees['id'] .'"/></form></td>'; 
+       echo '<td><form method="post" action="delete_ligne.php"><label> Supprimer </label><input type="submit" name="delete"class="BttonBlue" value="' .$donnees['id'] .'"/></form></td>';
+       echo'<td><form method="post" action="edit_ligne.php"><label> Modifier </label><input type="submit" name="edit" class="BttonBlue" value="' .$donnees['id'] .'"/></form></td>'; 
        echo '</tr>' ;
 
      }

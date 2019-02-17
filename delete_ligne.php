@@ -28,6 +28,7 @@
       $reponse->bindParam(1, $id);
       $reponse->execute();
       header ('location:admin_account.php');
+      
   ?>
   </body>
   </html>
